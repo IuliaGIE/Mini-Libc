@@ -5,6 +5,8 @@
 char *strcpy(char *destination, const char *source)
 {
 	/* TODO: Implement strcpy(). */
+	//Sursa:
+	/*https://www.techiedelight.com/implement-strcpy-function-c/*/
 	if(destination == NULL){
 		return NULL;
 	}
@@ -27,16 +29,13 @@ char *strncpy(char *destination, const char *source, size_t len)
 	/* TODO: Implement strncpy(). */
 	char *dest = destination;
 
-    /* Copiem caractere din sursă în destinație până când ajungem 
-    la lungimea specificată sau la sfârșitul șirului sursă. */
-    while (*source != '\0' && len > 0) {
+     while (*source != '\0' && len > 0) {
         *dest = *source;
         dest++;
         source++;
         len--;
     }
 
-    // Completați destinația cu caractere nule până când se atinge lungimea specificată.
     while (len > 0) {
         *dest = '\0';
         dest++;
@@ -129,18 +128,17 @@ char *strchr(const char *str, int c)
 char *strrchr(const char *str, int c)
 {
 	/* TODO: Implement strrchr(). */
-	char *last = NULL; // Variabilă pentru a ține ultimul pointer la caracter găsit.
+	char *last = NULL;
 
     while (*str != '\0')
     {
         if (*str == (char)c)
-            last = (char *)str; // Actualizăm pointerul la ultimul caracter găsit.
-
+            last = (char *)str;
         str++;
     }
 
     if (last != NULL)
-        return last; // Returnăm pointerul la ultimul caracter găsit.
+        return last;
     else
         return NULL;
 }
@@ -149,7 +147,7 @@ char *strstr(const char *haystack, const char *needle)
 {
 	/* TODO: Implement strstr(). */
 	if (*needle == '\0') {
-        return (char *)haystack; // Dacă șirul needle este gol, returnăm haystack.
+        return (char *)haystack;
     }
 
     while (*haystack != '\0') {
@@ -162,23 +160,23 @@ char *strstr(const char *haystack, const char *needle)
         }
 
         if (*n == '\0') {
-            return (char *)haystack; // S-a găsit o potrivire pentru needle.
+            return (char *)haystack;
         }
 
-        haystack++; // Trecem la următoarea poziție din haystack.
+        haystack++;
     }
 
-    return NULL; // Nu s-a găsit șirul needle în haystack.
+    return NULL;
 }
 
 char *strrstr(const char *haystack, const char *needle)
 {
 	/* TODO: Implement strrstr(). */
 	if (*needle == '\0') {
-        return (char *)haystack; // Dacă șirul needle este gol, returnăm haystack.
+        return (char *)haystack;
     }
 
-    const char *last = NULL; // Variabilă pentru a ține ultimul pointer la șirul needle.
+    const char *last = NULL;
 
     while (*haystack != '\0') {
         const char *h = haystack;
@@ -190,17 +188,17 @@ char *strrstr(const char *haystack, const char *needle)
         }
 
         if (*n == '\0') {
-            last = haystack; // S-a găsit o potrivire pentru needle.
+            last = haystack;
         }
 
-        haystack++; // Trecem la următoarea poziție din haystack.
+        haystack++;
     }
 
     if (last != NULL) {
-        return (char *)last; // Returnăm pointerul la ultima apariție a needle în haystack.
+        return (char *)last;
     }
 
-    return NULL; // Nu s-a găsit șirul needle în haystack.
+    return NULL;
 }
 
 void *memcpy(void *destination, const void *source, size_t num)
@@ -222,15 +220,15 @@ void *memmove(void *destination, const void *source, size_t num)
     const unsigned char *src = (const unsigned char *)source;
 
     if (dest > src && dest < src + num) {
-        // Caz de suprapunere în care dest este după src.
-        // Copiem de la sfârșit către început pentru a evita suprapunerea.
+        // Caz de suprapunere in care dest este dupa src.
+        // Copiem de la sfarsit către inceput pentru a evita suprapunerea.
         dest += num;
         src += num;
         while (num--) {
             *(--dest) = *(--src);
         }
     } else {
-        // Altfel, copiem de la început către sfârșit.
+        // Altfel, copiem de la inceput catre sfarsit.
         while (num--) {
             *dest++ = *src++;
         }
@@ -247,9 +245,9 @@ int memcmp(const void *ptr1, const void *ptr2, size_t num)
 
     for (size_t i = 0; i < num; i++) {
         if (p1[i] < p2[i]) {
-            return -1;  // ptr1 este mai mic decât ptr2
+            return -1;  // ptr1 este mai mic decat ptr2
         } else if (p1[i] > p2[i]) {
-            return 1;   // ptr1 este mai mare decât ptr2
+            return 1;   // ptr1 este mai mare decat ptr2
         }
     }
 
