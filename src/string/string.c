@@ -5,8 +5,6 @@
 char *strcpy(char *destination, const char *source)
 {
 	/* TODO: Implement strcpy(). */
-	//Sursa:
-	/*https://www.techiedelight.com/implement-strcpy-function-c/*/
 	if(destination == NULL){
 		return NULL;
 	}
@@ -29,7 +27,8 @@ char *strncpy(char *destination, const char *source, size_t len)
 	/* TODO: Implement strncpy(). */
 	char *dest = destination;
 
-    // Copiem caractere din sursă în destinație până când ajungem la lungimea specificată sau la sfârșitul șirului sursă.
+    /* Copiem caractere din sursă în destinație până când ajungem 
+    la lungimea specificată sau la sfârșitul șirului sursă. */
     while (*source != '\0' && len > 0) {
         *dest = *source;
         dest++;
@@ -98,7 +97,7 @@ int strncmp(const char *str1, const char *str2, size_t len)
         str2++;
         len--;
     }
-    if (len == 0) return 0; 
+    if (len == 0) return 0;
     return *(unsigned char*)str1 - *(unsigned char*)str2;
 	return -1;
 }
@@ -119,12 +118,12 @@ char *strchr(const char *str, int c)
 	while (*str != '\0')
     {
         if (*str == (char)c)
-            return (char *)str;  // Returnează pointer către caracterul găsit.
+            return (char *)str;
 
         str++;
     }
 
-    return NULL; 
+    return NULL;
 }
 
 char *strrchr(const char *str, int c)
@@ -270,3 +269,9 @@ void *memset(void *source, int value, size_t num)
 
 	return source;
 }
+
+//Surse:
+	/*https://stackoverflow.com/
+    https://www.gnu.org/software/libc/manual/html_mono/libc.html
+    https://chat.openai.com/chat
+    https://www.techiedelight.com/*/
