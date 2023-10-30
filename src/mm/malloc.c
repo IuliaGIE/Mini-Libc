@@ -24,11 +24,10 @@ void *malloc(size_t size)
 void *calloc(size_t nmemb, size_t size)
 {
 	/* TODO: Implement calloc(). */
-	void *ptr = mmap(NULL, size, PROT_WRITE | PROT_READ, MAP_ANONYMOUS | MAP_PRIVATE, 0, 0);
+	void *ptr = malloc(size);
 
 	if(ptr) {
 		memset(ptr, 0, nmemb * size);
-		mem_list_add(ptr, size);
 	} else {
 		ptr = NULL;
 	}
